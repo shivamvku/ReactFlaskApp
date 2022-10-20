@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import Search from "./components/search";
 
 const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY;
-
 const App = () => {
   const [word, setWord] = useState("");
 
