@@ -13,6 +13,8 @@ const App = () => {
     e.preventDefault();
     console.log(word);
   }
+  
+
 
   
   return (
