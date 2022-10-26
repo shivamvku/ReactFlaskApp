@@ -37,12 +37,13 @@ const App = () => {
     <div className="App">
       <Header title="Images Gallery" />
       <Search word={word} setWord={setWord} handleSubmit={handleSearchSubmit} />
-
       <Container className="mt-4">
-        <Row xs={1} md={2} lg={3}>
-          {images.map((image, i) => <Col key ={i} className='pb-3'> <ImagCard  image = {image} deleteImage = {handleDeleteImage}/></Col>)}
-        </Row>
-      </Container>
+         <Row xs={1} md={2} lg={3}>
+          {images.map((image, i) => <Col key ={i} className='pb-3'> <ImagCard  image = {image} deleteImage = {handleDeleteImage}/>
+          </Col>
+          )}
+          </Row> 
+        </Container>
     </div>
   );
 };
