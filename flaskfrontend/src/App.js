@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY;
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5050';
 
 const App = () => {
   const [word, setWord] = useState('');
@@ -16,7 +16,7 @@ const App = () => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     fetch(
-      `https://api.unsplash.com/photos/random/?query=${word}&client_id=${UNSPLASH_KEY}`
+      `${API_URL}/newimg?query=${word}`
     )
       .then((res) => res.json())
       .then((data) => {
