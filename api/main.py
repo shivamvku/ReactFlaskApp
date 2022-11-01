@@ -17,8 +17,8 @@ if not UNSPLASH_KEY:
 
 app = Flask(__name__)
 CORS(app)
-
 app.config["DEBUG"] = DEBUG
+
 
 @app.route("/newimg")
 def newimg():
@@ -27,11 +27,12 @@ def newimg():
     # headers = {"Authorization" : "Client_ID"+UNSPLASH_KEY}
     params = {"query" : word,"client_id" : UNSPLASH_KEY}
     response = requests.get(url = UNSPLASH_URL,params=params)
-    print(response.url)
     print(response)
     data = response.json()
     return  data
 
+# @app.route("/images")
+# def images():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5050)
