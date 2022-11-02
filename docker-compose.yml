@@ -5,8 +5,15 @@ services:
     build: ./flaskfrontend
     ports:
       - '3000:3000'
+    volumes:
+      - './flaskfrontend:/app'
+      - '/app/node_modules' 
+    environment:
+      - CHOKIDAR_USEPOLLING=true npm start
+      
+    stdin_open: true   
+
   api: 
     build: ./api
     ports:
       - '5050:5050'
-      
