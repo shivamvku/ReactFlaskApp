@@ -23,6 +23,7 @@ app.config["DEBUG"] = DEBUG
 @app.route("/newimg")
 def newimg():
     word = request.args.get("query")
+    # return {'word':word}
     print(word)
     # headers = {"Authorization" : "Client_ID"+UNSPLASH_KEY}
     params = {"query" : word,"client_id" : UNSPLASH_KEY}
