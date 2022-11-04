@@ -1,10 +1,13 @@
 from distutils.debug import DEBUG
-from flask import Flask, request 
+from flask import Flask, request, jsonify
 import requests  
 import os 
 from dotenv import load_dotenv
 from flask_cors import CORS
+from mongo_client import mongo_client
 
+gallery = mongo_client.gallery
+img_coll = gallery.images
 
 load_dotenv(dotenv_path="./.env.local")
 
@@ -32,8 +35,18 @@ def newimg():
     data = response.json()
     return  data
 
-# @app.route("/images")
-# def images():
+@app.route("/images", methods=["GET","POST"])
+def images():
+    if request.method == "GET":
+        images = img_coll.find({})
+        return jsonify([img for img in images])
+    if request.method == "POST":
+        img = request.get_json()
+        img["_id"] = img.get("id")
+        result = img_coll.insert_one(img)
+        inserted_id = result.inserted_id
+
+        return {"inserted_id": inserted_id}
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5050)
